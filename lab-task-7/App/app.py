@@ -15,14 +15,21 @@ class App:
         v1 = Vector(1, 3)
 
         angle = Angle()
-        
-
-        print(angle.__angle__(v, v1))
 
 
+        x = [1, 3, 4]
+        x.remove(3)
+        print(x)
 
-        print(v)
-        print(v + v1)
+
+       
+
+        # print(angle.__angle__(v, v1))
+
+
+
+        # print(v)
+        # print(v + v1)
         
 
 

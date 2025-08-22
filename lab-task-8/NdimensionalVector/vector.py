@@ -1,19 +1,20 @@
+from NdimensionalVector.validate  import Validate
 import math
-from ValidationClass.validate import Validate
 class NthVector:
     def __init__(self, items):
         self.values = tuple(items) # or list??
 
-    def get_item(self, i):
+
+    def __getitem__(self, i):
         return self.values[i]
 
-    def set_item(self, i, value):
+    def __setitem__(self, i, value):
         self.values[i] = value
 
-    def get_len(self):
+    def __len__(self):
         return len(self.values)
     
-    def do_adding(self, other):
+    def __add__(self, other):
         Validate.validate_len(self, other)
         
         result = [0] * len(self)
@@ -21,7 +22,7 @@ class NthVector:
             result[i] = self[i] + other[i]
         return NthVector(result)
 
-    def do_subtracting(self, other):
+    def __subt__(self, other):
         Validate.validate_len(self, other)
 
         result = [0] * len(self)
@@ -30,7 +31,7 @@ class NthVector:
         return NthVector(result)
     
     # public
-    def dot_Product(self, other):
+    def __dotProduct__(self, other):
         Validate.validate_len(self, other)
 
         dot_product = 0
@@ -38,13 +39,13 @@ class NthVector:
             dot_product += self[i] * other[i]
         return dot_product
     
-    def get_magnitude(self):
+    def __magnitude__(self):
         magnitude = 0
         for i in range(len(self)):
             magnitude += self[i] ** 2
         return math.sqrt(magnitude)
     
-    def get_angle(self, other):
+    def __angle__(self, other):
         Validate.validate_len(self, other)
         
         dot_product = self.__dotProduct__(other)

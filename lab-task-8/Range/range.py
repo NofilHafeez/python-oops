@@ -12,6 +12,7 @@ class Range:
      self._length = max(0, (stop - start + step - 1) // step)
      self._start = start
      self._step = step
+     self._stop = stop
 
 
    @property
@@ -21,10 +22,10 @@ class Range:
    @property
    def step(self): return self._step
 
-   def get_len(self):
+   def __len__(self):
       return self._length
 
-   def get_item(self, k):
+   def __getitem__(self, k):
         #  Return entry at index k (using standard interpretation if negative).
      if k < 0:
         k += len(self) # attempt to convert negative index

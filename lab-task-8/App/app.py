@@ -7,13 +7,15 @@ class App:
         v1 = NthVector([2, 3, 9, 10, 2])
 
         r1 = Range(2,4,1)
+        
         # print(list(r1))
         # print(r1[1])
 
         for i in r1:
             print(i)
 
-        # print(v.__angle__(v1))
+        print(v.get_angle(v1))
+
 
         # print(range(1, 30, 3))
 
