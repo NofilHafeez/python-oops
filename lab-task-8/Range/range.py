@@ -9,7 +9,6 @@ class Range:
      if (not isinstance(start, int) or  not isinstance(step, int) or not isinstance(stop, int)):
         return ValueError("not integer type")
         
-
      self._length = max(0, (stop - start + step - 1) // step)
      self._start = start
      self._step = step
@@ -22,10 +21,10 @@ class Range:
    @property
    def step(self): return self._step
 
-   def __len__ (self):
+   def get_len(self):
       return self._length
 
-   def __getitem__ (self, k):
+   def get_item(self, k):
         #  Return entry at index k (using standard interpretation if negative).
      if k < 0:
         k += len(self) # attempt to convert negative index

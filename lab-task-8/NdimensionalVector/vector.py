@@ -1,64 +1,55 @@
 import math
+from ValidationClass.validate import Validate
 class NthVector:
     def __init__(self, items):
         self.values = tuple(items) # or list??
 
-    def __getitem__(self, i):
+    def get_item(self, i):
         return self.values[i]
 
-    def __setitem__(self, items):    
-        self.values = list(items)
+    def set_item(self, i, value):
+        self.values[i] = value
 
-
-    def __len__(self):
+    def get_len(self):
         return len(self.values)
     
-    def __add__(self, other):
-        if len(self) != len(other):
-            raise ValueError("should be same length")
+    def do_adding(self, other):
+        Validate.validate_len(self, other)
         
         result = [0] * len(self)
         for i in range(len(self)):
             result[i] = self[i] + other[i]
         return NthVector(result)
-    
-    def __sub__(self, other):
-        if len(self) != len(other):
-            raise ValueError("should be same length")
-        
+
+    def do_subtracting(self, other):
+        Validate.validate_len(self, other)
+
         result = [0] * len(self)
         for i in range(len(self)):
             result[i] = self[i] - other[i]
         return NthVector(result)
     
+    # public
+    def dot_Product(self, other):
+        Validate.validate_len(self, other)
 
-    def __dotProduct__(self, other):
-        if len(self) != len(other):
-            raise ValueError("Vectors must be of the same dimension")
-        
         dot_product = 0
         for i in range(len(self)):
             dot_product += self[i] * other[i]
         return dot_product
     
-    def __magnitude__(self):
+    def get_magnitude(self):
         magnitude = 0
         for i in range(len(self)):
             magnitude += self[i] ** 2
         return math.sqrt(magnitude)
     
-    def __angle__(self, other):
-        if len(self) != len(other):
-            raise ValueError("Vectors must be of the same dimension")
+    def get_angle(self, other):
+        Validate.validate_len(self, other)
         
         dot_product = self.__dotProduct__(other)
-        print(f"dot_product: {dot_product}")
-
-        magnitude_self = self.__magnitude__()
-        print(f"magnitude_self: {magnitude_self}")
-        
+        magnitude_self = self.__magnitude__()    
         magnitude_other = other.__magnitude__()
-        print(f"magnitude_other: {magnitude_other}")
 
         value = dot_product / (magnitude_self * magnitude_other)
 
