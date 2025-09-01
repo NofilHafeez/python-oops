@@ -6,15 +6,22 @@ class App:
         v = NthVector([2, 3, 5, 3, 2])
         v1 = NthVector([2, 3, 9, 10, 2])
 
-        r1 = Range(2,4,1)
+        # r1 = Range(2,4,1)
+        # print(r1)
         
         # print(list(r1))
         # print(r1[1])
 
-        for i in r1:
+        # for i in range(len(v1)):
+        #     print(v1[i])
+    
+        # for i in Range(len(v1)):
+        #     print(v1[i])
+
+        for i in v1:
             print(i)
 
-        print(v.get_angle(v1))
+        # print(v._angle(v1))
 
 
         # print(range(1, 30, 3))

@@ -36,9 +36,11 @@ class Range:
 
 
    def __iter__(self):
-        # Allow iteration over the Range.
-        for i in range(len(self)):
-            yield self[i] 
+    i = 0
+    while i < len(self):
+        yield self[i] # use __getitem__ to access element
+        i += 1
+
    
 
    def __repr__(self):
