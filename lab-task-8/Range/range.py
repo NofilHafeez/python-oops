@@ -9,10 +9,15 @@ class Range:
      if (not isinstance(start, int) or  not isinstance(step, int) or not isinstance(stop, int)):
         return ValueError("not integer type")
         
-     self._length = max(0, (stop - start + step - 1) // step)
-     self._start = start
+     self._length = max(0, (stop - start + step - 1) // step) 
+     self._start = start      # 0 - 5 + 1 - 1 // 1
+                              # -5 // 1 = 5 =  0 1 2 3 4 
+                              # -3 -1 // 2, 4 // 2 = 2, 2 4
+                              # 5 
+                              # 5 - 0 + 1 - 1 // 2 = 5
+                              # 0 - 5 + 2 - 1 // 2 = -4 // 2 = -2 = 3, 1 
      self._step = step
-     self._stop = stop
+     self._stop = stop 
 
 
    @property
@@ -29,6 +34,7 @@ class Range:
         #  Return entry at index k (using standard interpretation if negative).
      if k < 0:
         k += len(self) # attempt to convert negative index
+       
 
      if not 0 <= k < self._length:
         raise IndexError( "index out of range" )
