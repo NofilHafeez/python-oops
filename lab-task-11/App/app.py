@@ -424,6 +424,105 @@ print(even)
 sqSum = SqSum.positievSqSum(even)
 print(sqSum)
 
-print(sum)
+# print(sum)
 
 # Association ex
+
+
+
+
+
+class Even:
+    def __init__(self, k):
+        self.k = k
+
+    def is_even(self, ):
+        for i in range(2, 11, 2): # only runs from 2 to 10 and checks it from this range
+            if (self.k == i):    # if true will stop
+                return self.k
+        return False 
+    # false if there is no true will stop
+    # if there is true then it runs again and checks and then it become true
+    # like for 4 integer the first loop check 2 == 4 not satisfy again loop check 4 == 4 true
+    # if there is an odd number like 3 if will run from 2 to 10 if it will not find will return false
+
+class SqSum:
+    def __init__(self, n: Even):
+        self.n = n
+ 
+    def positievSqSum(self):
+        if self.n.k <= 0:
+            raise ValueError("Should be positive")
+        
+        squareSum = 0
+        # array = []
+        for i in range(self.n.k):
+            squareSum += (i ** 2) # 1 option
+
+            # array.append(i ** 2)
+            # squareSum = sum(array, start=0) # 2 option
+
+
+        return  squareSum
+    
+
+
+even = Even(4)
+# print(even)
+sqSum = SqSum(even)
+sum = sqSum.positievSqSum()
+
+print(sum)
+
+# if we delete SqSum the Even will still exists
+
+# Aggregation
+
+
+
+class Even:
+    def __init__(self, k):
+        self.k = k
+
+    def is_even(self):
+        for i in range(2, 11, 2): # only runs from 2 to 10 and checks it from this range
+            if (self.k == i):    # if true will stop
+                return True
+        return False 
+    # false if there is no true will stop
+    # if there is true then it runs again and checks and then it become true
+    # like for 4 integer the first loop check 2 == 4 not satisfy again loop check 4 == 4 true
+    # if there is an odd number like 3 if will run from 2 to 10 if it will not find will return false
+
+class SqSum:
+    def __init__(self, even):
+        self.even = Even(even)
+ 
+    def positievSqSum(self):
+        if  not self.even.is_even():     # Ai help
+            raise ValueError("Not an even number")
+        
+        squareSum = 0
+        # array = []
+        k = self.even.k
+        for i in range(k):
+            squareSum += (i ** 2) # 1 option
+
+            # array.append(i ** 2)
+            # squareSum = sum(array, start=0) # 2 option
+
+
+        return  squareSum
+
+
+
+sqSum = SqSum(4)
+sum = sqSum.positievSqSum()
+print(sum)
+
+# if we delete SqSum the Even will also be deleted because we are making its instance inside the SqSum
+
+# Composition
+
+    
+ 
